@@ -1,0 +1,440 @@
+---------------- netbeen ya akta folder/directory create kora----------------
+------------------------------------------------------------------------------------------------------------------
+package Practics.com;
+
+import java.io.File;
+
+public class Create_folder_or_directory {
+
+public static void main(String[] args) {
+
+      File dic= new File("Jahir"); //jahir name ya akta folder create hoba netbeen ya 
+      dic.mkdir();
+
+    }
+}
+------------------------------- desktop ya akta folder create kora(path, name,folder delete)--------------------------
+------------------------------------------------------------------------------------------------------------------
+package Practics.com;
+
+import java.io.File;
+
+public class Create_folder_or_directory {
+
+    public static void main(String[] args) {
+
+        File dic = new File("C:/Users/LENOVO/Desktop/Jahir");
+        dic.mkdir(); //folder will be created
+
+        String dic_location = dic.getAbsolutePath();
+        System.out.println(dic_location);
+        System.out.println(dic.getName());
+
+        // dic.delete() dila -- folder delete hoya jabe
+
+        //if (dic.delete()) {
+            //System.out.println(dic.getName() + "folder has been deleted");
+       // }
+    }
+}
+
+----------------------------------- netbeen ya folder er bitor file create kora-------------------------------
+------------------------------------------------------------------------------------------------------------------
+package Practics.com;
+
+import java.io.File;
+
+public class Create_folder_or_directory {
+
+    public static void main(String[] args) {
+        File dic = new File("Jahir");
+        dic.mkdir();//folder will be created
+        //System.out.println("folder created");
+        String path = dic.getAbsolutePath();
+        
+        File file1 = new File(path + "/Student.txt");
+        File file2 = new File(path + "/Teacher.txt");
+        try {
+            file1.createNewFile();
+            file2.createNewFile();
+            //System.out.println("files are created");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+	//--------------extra ---file2 delete kora check kora ase ki na----
+	/*
+        file2.delete();
+        System.out.println("file2 deleted");
+        if(file2.exists()){
+            System.out.println("file2 exists"); 
+        } else{
+            System.out.println("file2 does not exists");
+        }
+	*/
+
+    }
+}
+--------------------------------- E drive ya file create kora---------------------------------
+------------------------------------------------------------------------------------------------------------------
+package Practics.com;
+
+import java.io.File;
+
+public class Create_folder_or_directory {
+
+    public static void main(String[] args) {
+        File dic = new File("E:/Input1234");
+        dic.mkdir();//folder will be created
+        String path = dic.getAbsolutePath();
+        System.out.println(path);
+
+        File file1 = new File(path + "/Student1.txt");
+        File file2 = new File(path + "/Student2.txt");
+        try {
+            file1.createNewFile();
+            file2.createNewFile();
+            System.out.println("files are created");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        file2.delete();
+        System.out.println("file2 deleted");
+        if (file2.exists()) {
+            System.out.println("file2 exists");
+        } else {
+            System.out.println("file2 does not exists");
+        }
+
+    }
+}
+------------------------ PrintWriter diya file ya (name,id,round) write kora------------------------
+------------------------------------------------------------------------------------------------------------------
+package Practics.com;
+
+import java.io.File;
+import java.io.PrintWriter;
+
+//------jodi (import java.io.*;)ata ditam ,toba io er sob class chola asto---
+ 
+public class Input_output2 {
+
+    public static void main(String[] args) {
+        File sk = new File("D:/Rifat");
+        sk.mkdir();//folder will be created
+        String path = sk.getAbsolutePath();
+        System.out.println(path);
+        
+        File dk = new File(path + "/Student.txt");
+        try {
+            dk.createNewFile();
+            PrintWriter sw = new PrintWriter(dk);
+            sw.write("Name : Md Jahir Uddin" + "\nId : 1279798" + "\nRound : 57");
+            sw.flush();
+            sw.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+}
+----------------------- Scanner  diya file ya (name,id,round) write kora-------------------------------
+------------------------------------------------------------------------------------------------------------------
+package Practics.com;
+
+import java.io.*;
+import java.util.*;
+
+public class Input_output2 {
+
+    public static void main(String[] args) {
+        File sk = new File("johir");
+        sk.mkdir();//folder will be created
+        String path = sk.getAbsolutePath();
+
+        File dk = new File(path + "/Student.txt");
+        try {
+            dk.createNewFile();
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("How many data input?");
+            int num = sc.nextInt();
+
+            sc.nextLine();
+
+            PrintWriter sw = new PrintWriter(dk);
+            for (int i = 0; i < num; i++) {
+                System.out.println("enter a name");
+                String name = sc.nextLine();
+
+                System.out.println("enter an ID");
+                int id = sc.nextInt();
+                sc.nextLine();
+                System.out.println("enter a round");
+                int round = sc.nextInt();
+                sc.nextLine();
+
+                sw.write("Name : " + name + "\nId : " + id + "\nRound : " + round + "\n\n");
+
+            }
+            sw.flush();
+            sw.close();
+
+//-------------------------- For Read ---------------------------------
+	Scanner de=new Scanner(f1);
+        while(de.hasNext()){
+            System.out.println(de.nextLine()); 
+        }
+        de.close();
+	
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+}
+
+-------------------------- object-outputStream er maddome write kora-------------------------------
+----------------------------------- Serialization ---------------------------------------------
+                                Part 01
+                             ***************
+package Practics.com;
+
+import java.io.Serializable;
+
+public class Savings_account implements Serializable {
+
+    String acc_name;
+    int acc_number;
+    double amount;
+
+    public Savings_account() {
+    }
+
+    public Savings_account(String acc_name, int acc_number, double amount) {
+        this.acc_name = acc_name;
+        this.acc_number = acc_number;
+        this.amount = amount;
+    }
+
+    public String getAcc_name() {
+        return acc_name;
+    }
+
+    public void setAcc_name(String acc_name) {
+        this.acc_name = acc_name;
+    }
+
+    public int getAcc_number() {
+        return acc_number;
+    }
+
+    public void setAcc_number(int acc_number) {
+        this.acc_number = acc_number;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+    
+
+}
+--------------------------------------- part 02 --------------------------------------------------------------------------
+
+package Practics.com;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+public class Test extends Savings_account {
+
+    public static void main(String[] args) {
+        Savings_account s1 = new Savings_account("Jahir", 100200, 2500);
+        Savings_account s2 = new Savings_account("Kamal", 100200, 1800);
+
+        try {
+            String loc="D:\\Jakir";
+             String locsd=loc+"\\asd.txt";     
+            File f1 = new File(locsd);
+            f1.createNewFile();
+            FileOutputStream h1 = new FileOutputStream(f1);
+            ObjectOutputStream sk = new ObjectOutputStream(h1);
+            sk.writeObject(s1);
+            sk.writeObject(s2);
+             sk.flush();
+            sk.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+ }
+------------------------------ serialization/Deserialization  Part 02 ---------------------------------------
+package Practics.com;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class Test extends Savings_account {
+
+    public static void main(String[] args) {
+        Savings_account s1 = new Savings_account("Jahir", 100200, 2500);
+        Savings_account s2 = new Savings_account("Kamal", 100200, 1800);
+
+        try {    
+            File f1 = new File("D:\\Jakir\\asd.txt");
+            f1.createNewFile();
+            FileOutputStream h1 = new FileOutputStream(f1);
+            ObjectOutputStream sk = new ObjectOutputStream(h1);
+            sk.writeObject(s1);
+            sk.writeObject(s2);
+             sk.flush();
+            sk.close();
+
+            //----------deserialization-------
+
+            FileInputStream h2 = new FileInputStream(f1);
+            ObjectInputStream skk = new ObjectInputStream(h2);
+           Savings_account obj1=(Savings_account)skk.readObject();
+           Savings_account obj2=(Savings_account)skk.readObject();
+           
+            System.out.println(obj2.acc_name+" \n"+obj2.amount);
+           
+            skk.close();
+
+           
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+}
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
